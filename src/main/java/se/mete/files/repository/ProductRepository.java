@@ -1,7 +1,7 @@
 package se.mete.files.repository;
 
 
-import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.JpaRepository; // interface that contains built-in CRUD op
 import org.springframework.stereotype.Repository;
 import se.mete.files.entity.Product;
 

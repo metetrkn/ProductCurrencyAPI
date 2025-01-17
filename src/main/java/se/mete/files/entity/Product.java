@@ -4,7 +4,7 @@ package se.mete.files.entity;
 import jakarta.persistence.*;
 
 /**
- * Represents a product entity in the database.
+ * Represents a product entity/table in the database.
  * This class is mapped to the "products" table.
  */
 @Entity
@@ -48,7 +48,6 @@ public class Product {
     }
 
     // Getters and Setters (for accessing and modifying private fields)
-
     public Long getId() {
         return id;
     }
