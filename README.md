@@ -138,4 +138,4 @@ Daifin Currency API is a Spring Boot-based application designed to manage produc
 The currency conversion relies on an external API service from VATComply. Ensure that the service is accessible during usage.
 
 ## License:
-This project is licensed under the MIT License - see the LICENSE file for details.
+This project is licensed under the [MIT License](LICENSE).
