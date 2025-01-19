@@ -127,6 +127,24 @@ Daifin Currency API is a Spring Boot-based application designed to manage produc
     }
 ]
 ```
+
+### Delete a product by ID
+- **URL**: `/api/products/{id}`
+- **Method**: `DELETE`
+- **Response**:
+```
+Product with ID 9 has been deleted successfully.
+```
+
+### Delete all products
+- **URL**: `/api/products`
+- **Method**: `DELETE`
+- **Response**:
+```
+All products have been deleted successfully.
+```
+
+
 ### Convert Product Price to Another Currency
 - **URL**: `/api/products/{id}/price?currency={currency}`
 - **Method**: `GET`
