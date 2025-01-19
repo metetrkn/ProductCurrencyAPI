@@ -6,6 +6,7 @@ import se.mete.files.service.CurrencyConversionService;
 import se.mete.files.service.ProductService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.http.HttpStatus;
 
 import java.util.List;
 
@@ -103,10 +104,13 @@ public class ProductController {
     /**
      * Deletes all products from the database.
      *
-     * @return A message indicating the operation was successful.
+     * @return A message indicating the operation was successful or that no products exist.
      */
     @DeleteMapping
     public ResponseEntity<String> deleteAllProducts() {
+        if (productService.hasNoProducts()) {
+            return ResponseEntity.status(HttpStatus.OK).body("There are no products in the database currently.");
+        }
         productService.deleteAllProducts();
         return ResponseEntity.ok("All products have been deleted successfully.");
     }

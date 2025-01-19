@@ -77,4 +77,14 @@ public class ProductService {
         return false;
     }
 
+    /**
+     * Checks if there are no products in the database.
+     *
+     * @return True if no products exist, false otherwise.
+     */
+    public boolean hasNoProducts() {
+        return productRepository.count() == 0;
+    }
+
+
 }
