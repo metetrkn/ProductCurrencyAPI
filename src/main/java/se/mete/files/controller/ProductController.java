@@ -123,12 +123,12 @@ public class ProductController {
      */
     @DeleteMapping("/{id}")
     public ResponseEntity<String> deleteProductById(@PathVariable Long id) {
-        boolean isDeleted = productService.deleteProductById(id);
-        if (isDeleted) {
-            return ResponseEntity.ok("Product with ID " + id + " has been deleted successfully.");
-        } else {
-            return ResponseEntity.notFound().build();
+        if (!productService.existsById(id)) {
+            return ResponseEntity.status(HttpStatus.OK).body("Product with ID " + id + " does not exist.");
         }
+        productService.deleteProductById(id);
+        return ResponseEntity.ok("Product with ID " + id + " has been deleted successfully.");
     }
+
 
 }

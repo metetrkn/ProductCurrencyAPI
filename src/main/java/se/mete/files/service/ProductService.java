@@ -8,14 +8,15 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 import java.util.Optional;
 
+
 /**
  * Service layer for managing product-related business logic.
  * Handles CRUD operations and acts as an intermediary between the controller and the repository.
  */
 @Service
 public class ProductService {
-
     private final ProductRepository productRepository;
+
 
     /**
      * Constructor-based dependency injection to inject the ProductRepository.
@@ -26,6 +27,7 @@ public class ProductService {
         this.productRepository = productRepository;
     }
 
+
     /**
      * Saves a new product to the database.
      *
@@ -35,6 +37,7 @@ public class ProductService {
     public Product saveProduct(Product product) {
         return productRepository.save(product); // Uses JpaRepository's save method
     }
+
 
     /**
      * Retrieves a product by its ID.
@@ -47,6 +50,7 @@ public class ProductService {
         return optionalProduct.orElse(null); // Returns null if product not found (could throw exception instead)
     }
 
+
     /**
      * Retrieves all products in the database.
      *
@@ -55,6 +59,7 @@ public class ProductService {
     public List<Product> getAllProducts() {
         return productRepository.findAll(); // Fetches all products from the database
     }
+
 
     /**
      * Deletes all products from the database.
@@ -72,6 +77,7 @@ public class ProductService {
         return productRepository.count() == 0;
     }
 
+
     /**
      * Deletes a product by its ID.
      *
@@ -85,6 +91,17 @@ public class ProductService {
         }
         return false;
     }
+
+    /**
+     * Checks if a product exists by its ID.
+     *
+     * @param id The product ID.
+     * @return True if the product exists, false otherwise.
+     */
+    public boolean existsById(Long id) {
+        return productRepository.existsById(id);
+    }
+
 
 
 }
