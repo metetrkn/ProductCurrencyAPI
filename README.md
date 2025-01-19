@@ -131,8 +131,10 @@ Daifin Currency API is a Spring Boot-based application designed to manage produc
 - **URL**: `/api/products/{id}/price?currency={currency}`
 - **Method**: `GET`
 - **Example Request**: `/api/products/1/price?currency=EUR`
-- **Response**
+- **Response sample:**
   85.00
+- Some sample currency abbreviations to use in url: EUR (Euro), USD (United States Dollar), JPY (Japanese Yen),GBP (British Pound),AUD (Australian Dollar),CAD (Canadian Dollar)
+  CHF (Swiss Franc)
 
 ### External API:
 The currency conversion relies on an external API service from VATComply. Ensure that the service is accessible during usage.
