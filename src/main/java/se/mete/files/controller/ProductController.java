@@ -101,6 +101,25 @@ public class ProductController {
         return ResponseEntity.ok(convertedPrice);
     }
 
+
+    /**
+     * Retrieves all products by category.
+     * Example request: GET /api/products/category?category=electronics
+     *
+     * @param category The product category received as a request parameter.
+     * @return A list of products in the requested category.
+     */
+    @GetMapping("/category")
+    public ResponseEntity<List<Product>> getProductsByCategory(@RequestParam String category) {
+        List<Product> products = productService.getProductsByCategory(category);
+        if (products.isEmpty()) {
+            return ResponseEntity.notFound().build(); // Return 404 if no products found in category
+        }
+        return ResponseEntity.ok(products); // Return the products found in the category
+    }
+
+
+
     /**
      * Deletes all products from the database.
      *

@@ -62,6 +62,17 @@ public class ProductService {
 
 
     /**
+     * Retrieves all products by category.
+     *
+     * @param category The category to filter by.
+     * @return A list of products in the given category.
+     */
+    public List<Product> getProductsByCategory(String category) {
+        return productRepository.findByCategory(category); // Uses repository method to find products by category
+    }
+
+
+    /**
      * Deletes all products from the database.
      */
     public void deleteAllProducts() {
