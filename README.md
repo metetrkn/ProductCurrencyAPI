@@ -173,6 +173,26 @@ All products have been deleted successfully.
 ```
 
 
+### Update the existing product
+- **URL**: `/api/products/{id}`
+- **Method**: `UPDATE`
+- - **Request sample: (New products information in JSON format)** 
+
+```json
+  {
+    "name": "Wireless Headphones",
+    "category": "Electronics",
+    "currency": "USD",
+    "price": 150.0,
+    "ean": "9876543210123",
+    "asin": "B08CXYZ456"
+  }
+```
+- **Response sample:**
+- ```Product with ID {IdNumber} has been updated successfully.```
+
+
+
 ### Convert Product Price to Another Currency
 - **URL**: `/api/products/{id}/price?currency={currency}`
 - **Method**: `GET`
