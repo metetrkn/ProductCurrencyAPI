@@ -55,4 +55,26 @@ public class ProductService {
     public List<Product> getAllProducts() {
         return productRepository.findAll(); // Fetches all products from the database
     }
+
+    /**
+     * Deletes all products from the database.
+     */
+    public void deleteAllProducts() {
+        productRepository.deleteAll();
+    }
+
+    /**
+     * Deletes a product by its ID.
+     *
+     * @param id The ID of the product to delete.
+     * @return True if the product was deleted, false if not found.
+     */
+    public boolean deleteProductById(Long id) {
+        if (productRepository.existsById(id)) {
+            productRepository.deleteById(id);
+            return true;
+        }
+        return false;
+    }
+
 }

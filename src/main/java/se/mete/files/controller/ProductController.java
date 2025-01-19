@@ -99,4 +99,32 @@ public class ProductController {
 
         return ResponseEntity.ok(convertedPrice);
     }
+
+    /**
+     * Deletes all products from the database.
+     *
+     * @return A message indicating the operation was successful.
+     */
+    @DeleteMapping
+    public ResponseEntity<String> deleteAllProducts() {
+        productService.deleteAllProducts();
+        return ResponseEntity.ok("All products have been deleted successfully.");
+    }
+
+    /**
+     * Deletes a product by its ID.
+     *
+     * @param id The product ID received as a path variable.
+     * @return A message indicating success or failure.
+     */
+    @DeleteMapping("/{id}")
+    public ResponseEntity<String> deleteProductById(@PathVariable Long id) {
+        boolean isDeleted = productService.deleteProductById(id);
+        if (isDeleted) {
+            return ResponseEntity.ok("Product with ID " + id + " has been deleted successfully.");
+        } else {
+            return ResponseEntity.notFound().build();
+        }
+    }
+
 }
