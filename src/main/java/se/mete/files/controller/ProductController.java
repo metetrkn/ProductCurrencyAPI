@@ -119,7 +119,6 @@ public class ProductController {
     }
 
 
-
     /**
      * Deletes all products from the database.
      *
@@ -155,4 +154,35 @@ public class ProductController {
     }
 
 
+    /**
+     * Updates an existing product by ID.
+     * Example request: PUT /api/products/{id}
+     *
+     * @param id The ID of the product to update.
+     * @param updatedProduct The new product data.
+     * @return Response with status 404 if the product is not found, otherwise updates the product and returns status 200.
+     */
+    @PutMapping("/{id}")
+    public ResponseEntity<String> updateProduct(@PathVariable Long id, @RequestBody Product updatedProduct) {
+        Product existingProduct = productService.getProductById(id); // existingProduct to be updated
+        String existingProductName = existingProduct.getName(); // existingProduct's name
+
+        if (existingProduct == null) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND)
+                    .body("Product with ID " + id + " not found.");
+        }
+
+        // Updates the existing product with the new data
+        existingProduct.setName(updatedProduct.getName());
+        existingProduct.setCategory(updatedProduct.getCategory());
+        existingProduct.setPrice(updatedProduct.getPrice());
+        existingProduct.setCurrency(updatedProduct.getCurrency());
+        existingProduct.setEan(updatedProduct.getEan());
+        existingProduct.setAsin(updatedProduct.getAsin());
+
+        productService.saveProduct(existingProduct); // Saves the updated product back to the database
+
+        return ResponseEntity.ok("Product with ID " + id + " - (" + existingProductName +
+                ") has been updated successfully.");
+    }
 }

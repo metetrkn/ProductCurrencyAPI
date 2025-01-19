@@ -114,5 +114,13 @@ public class ProductService {
     }
 
 
-
+    /**
+     * Updates an existing product in the database.
+     *
+     * @param updatedProduct The updated product object.
+     * @return The updated product.
+     */
+    public Product updateProduct(Product updatedProduct) {
+        return productRepository.save(updatedProduct); // Uses JpaRepository's save method which also handles update
+    }
 }
