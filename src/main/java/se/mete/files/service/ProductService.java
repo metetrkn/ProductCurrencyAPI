@@ -64,6 +64,15 @@ public class ProductService {
     }
 
     /**
+     * Checks if there are no products in the database.
+     *
+     * @return True if no products exist, false otherwise.
+     */
+    public boolean hasNoProducts() {
+        return productRepository.count() == 0;
+    }
+
+    /**
      * Deletes a product by its ID.
      *
      * @param id The ID of the product to delete.
@@ -75,15 +84,6 @@ public class ProductService {
             return true;
         }
         return false;
-    }
-
-    /**
-     * Checks if there are no products in the database.
-     *
-     * @return True if no products exist, false otherwise.
-     */
-    public boolean hasNoProducts() {
-        return productRepository.count() == 0;
     }
 
 
