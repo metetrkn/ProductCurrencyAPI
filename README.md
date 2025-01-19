@@ -60,7 +60,7 @@ Daifin Currency API is a Spring Boot-based application designed to manage produc
 
 - **URL**: `/api/products`
 - **Method**: `POST`
-- **Request Body**:
+- **Request Body sample:**:
   ```json
   {
     "name": "Product Name",
@@ -87,7 +87,7 @@ Daifin Currency API is a Spring Boot-based application designed to manage produc
 ### Get a Product by ID
 - **URL**: `/api/products/{id}`
 - **Method**: `GET`
-- **Response**:
+- **Response sample:**:
 ```json
   {
     "id": 1,
@@ -103,7 +103,7 @@ Daifin Currency API is a Spring Boot-based application designed to manage produc
 ### Get All Products
 - **URL**: `/api/products`
 - **Method**: `GET`
-- **Response**
+- **Response sample:**
 ```json
 [
     {
@@ -128,18 +128,46 @@ Daifin Currency API is a Spring Boot-based application designed to manage produc
 ]
 ```
 
+### Get Products by Category
+- **URL**: `/api/products/category?category={nameOfCategory}}`
+- **Method**: `GET`
+- **Response sample:**
+```json
+[
+      {
+        "id": 28,
+        "name": "Wireless Headphones",
+        "category": "Electronics",
+        "currency": "USD",
+        "price": 150.0,
+        "ean": "9876543210123",
+        "asin": "B08CXYZ456"
+      },
+
+      {
+        "id": 45,
+        "name": "Smartphone",
+        "category": "Electronics",
+        "currency": "USD",
+        "price": 799.99,
+        "ean": "1234567890012",
+        "asin": "B09ABC7890"
+      }
+]
+```
+
 ### Delete a product by ID
 - **URL**: `/api/products/{id}`
 - **Method**: `DELETE`
-- **Response**:
+- **Response sample:**:
 ```
-Product with ID 9 has been deleted successfully.
+Product with ID 9 - ({theProductName}) has been deleted successfully.
 ```
 
 ### Delete all products
 - **URL**: `/api/products`
 - **Method**: `DELETE`
-- **Response**:
+- **Response sample:**:
 ```
 All products have been deleted successfully.
 ```
