@@ -109,7 +109,7 @@ public class ProductController {
     @DeleteMapping
     public ResponseEntity<String> deleteAllProducts() {
         if (productService.hasNoProducts()) {
-            return ResponseEntity.status(HttpStatus.OK).body("There are no products in the database currently.");
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("There are no products in the database currently.");
         }
         productService.deleteAllProducts();
         return ResponseEntity.ok("All products have been deleted successfully.");
@@ -123,11 +123,16 @@ public class ProductController {
      */
     @DeleteMapping("/{id}")
     public ResponseEntity<String> deleteProductById(@PathVariable Long id) {
+        // Getting product from its ID
+        Product product = productService.getProductById(id);
+
         if (!productService.existsById(id)) {
-            return ResponseEntity.status(HttpStatus.OK).body("Product with ID " + id + " does not exist.");
+            return ResponseEntity.status(HttpStatus.NOT_FOUND)
+                    .body("Product with ID " + id + " does not exist.");
         }
+
         productService.deleteProductById(id);
-        return ResponseEntity.ok("Product with ID " + id + " has been deleted successfully.");
+        return ResponseEntity.ok("Product with ID " + id + " - (" + product.getName() + ") has been deleted successfully.");
     }
 
 
